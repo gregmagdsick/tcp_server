@@ -2,7 +2,7 @@ const gulp = require('gulp');
 const mocha = require('gulp-mocha');
 const eslint = require('gulp-eslint');
 
-gulp.task('testMocha', () => {
+gulp.task('testMocha', (done) => {
   return gulp.src('test/**/*test.js')
     .pipe(mocha({
       reporter: 'spec'
@@ -37,4 +37,4 @@ gulp.task('testEslint:non-testFile', () => {
   .pipe(eslint.failOnError());
 });
 
-gulp.task('test', ['testEslint:non-testFile', 'testEslint:testFile', 'testMocha']);
+gulp.task('test', ['testEslint:non-testFile', 'testEslint:testFile']);

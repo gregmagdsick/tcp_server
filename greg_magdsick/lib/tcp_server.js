@@ -1,7 +1,6 @@
 const net = require('net');
 const writeLog = require(__dirname + '/writeLog');
 
-
 const server = net.createServer((socket) => {
   socket.pipe(writeLog());
 });
