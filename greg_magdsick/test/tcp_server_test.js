@@ -22,4 +22,7 @@ describe('tcp server tests', () => {
       expect(file).to.contain('GET / HTTP/1.1\r\nHost: localhost:7000');
     })
   });
+  after(() => {
+    server.close();
+  })
 });

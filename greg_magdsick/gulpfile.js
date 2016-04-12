@@ -37,4 +37,4 @@ gulp.task('testEslint:non-testFile', () => {
   .pipe(eslint.failOnError());
 });
 
-gulp.task('test', ['testEslint:non-testFile', 'testEslint:testFile']);
+gulp.task('test', ['testEslint:non-testFile', 'testEslint:testFile', 'testMocha']);
