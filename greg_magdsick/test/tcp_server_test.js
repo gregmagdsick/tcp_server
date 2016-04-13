@@ -1,7 +1,7 @@
 // TODO test TCP response somehow
 
 const expect = require('chai').expect;
-const server = require(__dirname + '/../lib/tcp_server.js')
+const server = require(__dirname + '/../lib/tcp_server.js');
 const request = require('superagent');
 const fs = require('fs');
 
@@ -12,17 +12,19 @@ describe('tcp server tests', () => {
   it('server should not send a response to requests', (done) => {
     request.get('localhost:7000').end(() => {
       expect(true).to.eql(false);
-    })
+    });
     done();
   });
   it('server should load expected data to the log files', () => {
-    fs.readdir(__dirname + '/../dat', function(err, files) {
-      console.log(__dirname);
-      var file = fs.readFileSync(__dirname + '/../dat/' + files[files.length], 'utf8');
+    fs.readdir(__dirname + '/../dat', (err, files) => {
+      if (err) {
+        return process.stderr.write(err);
+      }
+      var file = fs.readFileSync(__dirname + '/../dat/' + files[files.length - 1], 'utf8');
       expect(file).to.contain('GET / HTTP/1.1\r\nHost: localhost:7000');
-    })
+    });
   });
   after(() => {
     server.close();
-  })
+  });
 });

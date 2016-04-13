@@ -1,6 +1,5 @@
 const expect = require('chai').expect;
-const writeLog = require(__dirname + '/../lib/writeLog.js')
-const fs = require('fs');
+const writeLog = require(__dirname + '/../lib/writeLog.js');
 
 describe('test writeLog file', () => {
   it('writeLog should be a function', () => {
