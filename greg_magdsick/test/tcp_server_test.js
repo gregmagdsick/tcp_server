@@ -15,13 +15,14 @@ describe('tcp server tests', () => {
     });
     done();
   });
-  it('server should load expected data to the log files', () => {
+  it('server should load expected data to the log files', (done) => {
     fs.readdir(__dirname + '/../dat', (err, files) => {
       if (err) {
         return process.stderr.write(err);
       }
       var file = fs.readFileSync(__dirname + '/../dat/' + files[files.length - 1], 'utf8');
       expect(file).to.contain('GET / HTTP/1.1\r\nHost: localhost:7000');
+      done();
     });
   });
   after(() => {
