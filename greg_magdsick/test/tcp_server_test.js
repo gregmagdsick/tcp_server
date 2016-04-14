@@ -6,6 +6,9 @@ const request = require('superagent');
 const fs = require('fs');
 
 describe('tcp server tests', () => {
+  after(() => {
+    server.close();
+  });
   it('dummy test 1 === 1', () => {
     expect(1).to.eql(1);
   });
@@ -24,8 +27,5 @@ describe('tcp server tests', () => {
       expect(file).to.contain('GET / HTTP/1.1\r\nHost: localhost:7000');
       done();
     });
-  });
-  after(() => {
-    server.close();
   });
 });

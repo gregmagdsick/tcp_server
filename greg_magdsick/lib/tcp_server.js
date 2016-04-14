@@ -8,5 +8,3 @@ const server = module.exports = net.createServer((socket) => {
 server.listen(7000, () => {
   process.stdout.write('server listening on 7000\n');
 });
-
-server.close();
